@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <b>Aplikasi Pencatat Keuangan Modern dengan Desain Liquid Glassmorphism</b><br>
-  Ditenagai oleh <b>React Native 0.86</b>, <b>React 19</b>, dan <b>Expo SDK 57</b>.
+  <b>A Modern Cash Flow & Expense Tracker with Liquid Glassmorphism Design</b><br>
+  Powered by <b>React Native 0.86</b>, <b>React 19</b>, and <b>Expo SDK 57</b>.
 </p>
 
 <p align="center">
@@ -20,146 +20,144 @@
 
 ---
 
-## 🌟 Tentang Proyek
+## 🌟 Overview
 
-**CatatUang** adalah aplikasi pencatatan arus kas (pemasukan dan pengeluaran) pribadi yang mengutamakan estetika visual tingkat tinggi dengan antarmuka **Liquid Glassmorphism**, transisi halus, haptic feedback, serta pelaporan keuangan yang interaktif dan komprehensif.
-
-Aplikasi dirancang responsif dan fleksibel dengan dukungan penuh **Dark Mode & Light Mode** otomatis sesuai preferensi pengguna.
+**CatatUang** is a personal finance and cash flow management mobile application built for speed, simplicity, and visual refinement. Featuring an ultra-modern **Liquid Glassmorphism** interface, fluid micro-interactions, native haptic feedback, and comprehensive financial analytics, it delivers an intuitive budgeting experience across mobile and web platforms.
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
-| Fitur | Deskripsi |
+| Feature | Description |
 | :--- | :--- |
-| 🪟 **Liquid Glassmorphism UI** | Desain frosted glass berlapis dengan `expo-blur`, gradasi dinamis `expo-linear-gradient`, serta efek floating orbs beranimasi. |
-| ⚡ **Live Realtime Balance** | Kalkulasi saldo instan dan otomatis menghitung total pemasukan, pengeluaran, serta net surplus/defisit. |
-| ➕ **Pencatatan Cepat (Quick Add)** | Modal form pencatatan pemasukan/pengeluaran interaktif lengkap dengan kategori preset dan validasi nominal. |
-| 📜 **Filter Riwayat Fleksibel** | Telusuri riwayat transaksi berdasarkan scope **Per Hari** atau **Per Bulan**, dengan filter tipe (Semua / Masuk / Keluar). |
-| 📊 **Laporan & Rincian Kategori** | Visualisasi alokasi pengeluaran dan pemasukan per kategori menggunakan persentase & visual bar meter. |
-| 🌓 **Dual Theme (Dark & Light)** | Transisi tema instan yang adaptif dengan kenyamanan visual di berbagai kondisi pencahayaan. |
-| 📳 **Haptic Feedback** | Respon getar sentuhan native iOS/Android via `expo-haptics` untuk interaksi yang memuaskan. |
-| 🔔 **Glass Toast & Animated Loader** | Notifikasi status dan loader aksi kustom dengan animasi pulse & spin fluid. |
+| 🪟 **Liquid Glassmorphism UI** | Multi-layered frosted glass aesthetic crafted with `expo-blur`, dynamic `expo-linear-gradient` accents, and ambient floating orbs. |
+| ⚡ **Realtime Balance Tracking** | Instant calculation of active balance, total income, total expenses, and net surplus/deficit. |
+| ➕ **Quick Transaction Entry** | Modal-based quick capture for income and expense records with category presets and numeric validation. |
+| 📜 **Granular History Filtering** | Filter transaction history by scope (**Daily** or **Monthly**) and by transaction type (**All**, **Income**, or **Expense**). |
+| 📊 **Financial Analytics & Breakdown** | Comprehensive monthly reports with visual category distribution progress bars and percentage metrics. |
+| 🌓 **Adaptive Dual Theme** | Seamless **Dark Mode** and **Light Mode** support with high-contrast readability in any lighting environment. |
+| 📳 **Haptic Feedback** | Native iOS and Android tactile responses powered by `expo-haptics` for tactile user confirmations. |
+| 🔔 **Glass Toasts & Animated Loaders** | Custom glass notification overlays and synchronized liquid loading spinners. |
 
 ---
 
-## 🧭 Alur & Flow Aplikasi
+## 🧭 Application Architecture & Workflow
 
 ```mermaid
 flowchart TD
-    A[🔑 Halaman Login / Demo] -->|Autentikasi Cepat| B[📱 Dashboard Utama]
+    A[🔑 Authentication Screen] -->|Quick / Demo Sign-in| B[📱 Main Dashboard]
     
-    B --> C[💰 Ringkasan Saldo & Quick Stats]
+    B --> C[💰 Active Balance & Cash Flow Summary]
     B --> D[➕ Floating Action Modal]
-    B --> E[📜 5 Transaksi Terkini]
+    B --> E[📜 Recent Transactions Feed]
     
-    D -->|Input Pemasukan / Pengeluaran| F[(State Transaksi)]
-    F -->|Update Realtime| B
-    F -->|Update Data| G[📜 Halaman Riwayat]
-    F -->|Kalkulasi Breakdown| H[📊 Halaman Laporan]
+    D -->|Submit Income / Expense| F[(Transaction Store / State)]
+    F -->|Realtime Update| B
+    F -->|Synchronize Data| G[📜 History Screen]
+    F -->|Aggregate Analytics| H[📊 Report Screen]
 
-    G --> I[Filter: Per Hari / Per Bulan]
-    G --> J[Filter: Semua / Masuk / Keluar]
-    G --> K[Aksi: Hapus Transaksi]
+    G --> I[Filter Scope: Daily / Monthly]
+    G --> J[Type Filter: All / Income / Expense]
+    G --> K[Action: Delete Record]
 
-    H --> L[Pilih Periode Bulan]
-    H --> M[Kalkulasi Surplus / Defisit]
-    H --> N[Persentase Kategori & Progress Bar]
+    H --> L[Select Target Month]
+    H --> M[Compute Surplus vs Deficit]
+    H --> N[Category Distribution & Visual Meters]
 ```
 
-### 1. **Autentikasi & Onboarding**
-- Halaman login bergaya glass card.
-- Dilengkapi tombol shortcut **"⚡ Isi otomatis akun Demo"** (`demo@keuangan.id` / `secret123`).
-- Simulasi validasi kredensial dan feedback status via Glass Toast.
+### 1. **Authentication Flow**
+- Sleek glassmorphism login container with credential validation.
+- One-tap **"⚡ Auto-fill Demo Account"** shortcut (`demo@keuangan.id` / `secret123`) for rapid testing.
+- State-driven authentication transition with animated feedback toasts.
 
-### 2. **Dashboard Finansial**
-- **Kartu Saldo Utama**: Menampilkan Total Saldo, Indikator Realtime, badge total uang masuk vs uang keluar.
-- **Shortcut Navigasi & Quick Action**: Tombol cepat catat pemasukan (+) atau pengeluaran (-).
-- **Recent Activities**: Menampilkan 5 transaksi paling mutakhir secara ringkas.
+### 2. **Financial Dashboard**
+- **Primary Balance Card**: Displays active balance, real-time status beacon, and summarized cash flow counters.
+- **Quick Action Bar**: Dedicated shortcuts to log incoming or outgoing funds.
+- **Recent Activities**: Chronological feed of the 5 most recent transactions.
 
-### 3. **Riwayat Transaksi (History)**
-- **Scope Filter**: Pilihan penelusuran transaksi spesifik berdasarkan **Tanggal (Per Hari)** atau **Bulan (Per Bulan)**.
-- **Type Filter**: Filter cepat `Semua`, `Masuk` (Income), atau `Keluar` (Expense).
-- **Manajemen Data**: Opsi hapus transaksi langsung dari daftar riwayat dengan haptic feedback.
+### 3. **Transaction History**
+- **Multi-dimensional Filtering**: Switch between **Day-by-Day** and **Month-by-Month** perspectives.
+- **Type Filtering**: Instant segmented filter for `All`, `Income`, and `Expense` types.
+- **Record Management**: One-tap record deletion with haptic confirmation.
 
-### 4. **Laporan Bulanan (Report & Breakdown)**
-- Ringkasan performa finansial bulanan (Surplus vs Defisit).
-- **Category Breakdown Meter**: Menghitung porsi pengeluaran dan pemasukan per kategori beserta visualisasi *progress bar* persentase.
+### 4. **Monthly Reports & Analytics**
+- Comprehensive overview of monthly savings rate and cash balance delta.
+- **Category Breakdown Meter**: Ranked allocation breakdown showing category percentage and proportionate progress meters.
 
 ---
 
-## 🛠️ Tech Stack & Dependensi
+## 🛠️ Technology Stack
 
 - **Core Framework**: [React Native 0.86](https://reactnative.dev/) & [React 19](https://react.dev/)
-- **Application Platform**: [Expo SDK 57](https://expo.dev/)
+- **Platform & Tooling**: [Expo SDK 57](https://expo.dev/)
 - **Language**: [TypeScript 6](https://www.typescriptlang.org/)
-- **Visual & UI**:
-  - `expo-blur` — Frosted glassmorphism blur effect
-  - `expo-linear-gradient` — Gradasi warna dinamis
-  - `expo-glass-effect` — Enhancements efek kaca
-  - `react-native-reanimated` — Animasi performa tinggi
-- **Interactivity & UX**:
-  - `expo-haptics` — Respon getar haptic native
-  - `expo-status-bar` — Dynamic status bar themer
+- **UI & Graphics**:
+  - `expo-blur` — Hardware-accelerated glassmorphism backdrop blur
+  - `expo-linear-gradient` — Dynamic visual gradients
+  - `expo-glass-effect` — Native glass surface shaders
+  - `react-native-reanimated` — High-performance declarative animations
+- **Interactivity & System Integration**:
+  - `expo-haptics` — Native tactile feedback
+  - `expo-status-bar` — Dynamic status bar controller
 
 ---
 
-## 📂 Struktur Direktori
+## 📂 Project Structure
 
 ```text
 catat-uang/
-├── assets/                  # Aset icon, splash, dan gambar adaptif
+├── assets/                  # Icons, splash screen, and adaptive graphical assets
 │   ├── icon.png
 │   ├── favicon.png
 │   ├── splash-icon.png
 │   └── android-icon-*.png
-├── .claude/                 # Konfigurasi workspace
-├── App.tsx                  # Core app logic, screen flows, state, & styling
-├── app.json                 # Konfigurasi Expo & metadata aplikasi
-├── index.ts                 # App entrypoint
-├── package.json             # Dependensi dan script project
-├── tsconfig.json            # Konfigurasi TypeScript
-├── AGENTS.md                # Dokumentasi arsitektur runtime agent
-└── README.md                # Dokumentasi utama proyek
+├── .claude/                 # Workspace and assistant configurations
+├── App.tsx                  # Core application logic, screens, state, & styling
+├── app.json                 # Expo configuration and application metadata
+├── index.ts                 # Application runtime entrypoint
+├── package.json             # Manifest, dependencies, and execution scripts
+├── tsconfig.json            # TypeScript compiler configuration
+├── AGENTS.md                # Agent runtime and environment architecture guide
+└── README.md                # Primary project documentation
 ```
 
 ---
 
-## 🚀 Memulai (Quick Start)
+## 🚀 Getting Started
 
-### Prasyarat
-- [Node.js](https://nodejs.org/) (versi LTS direkomendasikan)
-- Package manager: `npm` atau `yarn` / `pnpm` / `bun`
-- [Expo Go](https://expo.dev/go) di perangkat smartphone (iOS/Android) atau Simulator/Emulator
+### Prerequisites
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- Package Manager: `npm`, `yarn`, `pnpm`, or `bun`
+- [Expo Go](https://expo.dev/go) app installed on your physical device (iOS/Android) or configured Simulator/Emulator
 
-### Langkah Instalasi
+### Installation & Run
 
-1. **Clone repositori**:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/anur/catat-uang.git
    cd catat-uang
    ```
 
-2. **Instal dependensi**:
+2. **Install project dependencies**:
    ```bash
    npm install
    ```
 
-3. **Jalankan server Expo**:
+3. **Start the development server**:
    ```bash
    npx expo start
    ```
 
-4. **Buka aplikasi**:
-   - **Android**: Tekan `a` pada terminal atau scan QR code melalui Expo Go.
-   - **iOS**: Tekan `i` pada terminal (membutuhkan macOS + Xcode simulator) atau scan QR code via aplikasi Kamera/Expo Go.
-   - **Web**: Tekan `w` untuk menjalankan di browser.
+4. **Launch the application**:
+   - **Android**: Press `a` in the terminal or scan the QR code via Expo Go.
+   - **iOS**: Press `i` in the terminal (macOS + Xcode required) or scan the QR code via Camera/Expo Go.
+   - **Web**: Press `w` to run in a web browser.
 
 ---
 
-## 🧪 Validasi Tipe & Kode
+## 🧪 Quality & Type Checking
 
-Jalankan typecheck TypeScript sebelum commit:
+Ensure type safety before committing changes:
 
 ```bash
 npx tsc --noEmit
@@ -167,12 +165,12 @@ npx tsc --noEmit
 
 ---
 
-## 📄 Lisensi
+## 📄 License
 
-Didistribusikan di bawah lisensi **MIT**. Lihat berkas [LICENSE](LICENSE) untuk informasi lebih lanjut.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for complete details.
 
 ---
 
 <p align="center">
-  Dibuat dengan ❤️ untuk pengelolaan keuangan yang lebih rapi dan elegan.
+  Crafted with precision for elegant and effortless personal wealth tracking.
 </p>
